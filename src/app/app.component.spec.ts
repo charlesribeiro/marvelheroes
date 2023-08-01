@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppComponent } from "./app.component";
+import { LoginComponent } from "./components/login/login.component";
+import { provideMockStore } from "@ngrx/store/testing";
+import { initialAppState as initialState } from "src/state/app.reducer";
 
 describe("AppComponent", () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -9,7 +12,8 @@ describe("AppComponent", () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AppComponent],
+      declarations: [AppComponent, LoginComponent],
+      providers: [provideMockStore({ initialState })],
     })
   );
 
