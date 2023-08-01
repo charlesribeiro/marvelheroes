@@ -18,9 +18,12 @@ export class AppEffects {
       ofType(fromMarvelActions.getCharactersAll),
       mergeMap(() =>
         this.marvelService.getCharactersAll().pipe(
-          map((res) => fromMarvelActions.getCharactersAllSuccess()),
-          catchError((error) =>
-            of(fromMarvelActions.getCharactersAllFail({ message: error }))
+          map((list) => list?.data?.results),
+          map((charList) =>
+            fromMarvelActions.getCharactersAllSuccess({ charList })
+          ),
+          catchError((errorMessage) =>
+            of(fromMarvelActions.getCharactersAllFail({ errorMessage }))
           )
         )
       )

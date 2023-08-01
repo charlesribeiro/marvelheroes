@@ -12,6 +12,7 @@ export const initialAppState: IApp = {
   username: "",
   password: "",
   authenticationMessage: "",
+  characterList: [],
 };
 
 export const reducer = createReducer(
@@ -19,13 +20,13 @@ export const reducer = createReducer(
   on(getCharactersAll, (state) => ({
     ...state,
   })),
-  on(getCharactersAllSuccess, (state) => ({
+  on(getCharactersAllSuccess, (state, { charList }) => ({
     ...state,
-    authenticationMessage: "",
+    characterList: charList,
   })),
-  on(getCharactersAllFail, (state, { message }) => ({
+  on(getCharactersAllFail, (state, { errorMessage }) => ({
     ...state,
-    authenticationMessage: message,
+    authenticationMessage: errorMessage,
   }))
 );
 
