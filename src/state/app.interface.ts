@@ -1,9 +1,9 @@
+import { StoreList } from "../utils/store-utils";
 import { CharacterData } from "../app/models/characterData.interface";
 
 export interface IApp {
-  authenticationMessage: string;
-  charList: CharacterData[];
-  selectedList: CharacterData[];
+  charList: StoreList<CharacterData>;
+  selectedList: StoreList<CharacterData>;
 }
 
 export interface IAppState {

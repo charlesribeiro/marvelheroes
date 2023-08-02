@@ -19,8 +19,8 @@ export class AppEffects {
       mergeMap(() =>
         this.marvelService.getCharactersAll().pipe(
           map((list) => list?.data?.results),
-          map((charList) =>
-            fromMarvelActions.getCharactersAllSuccess({ charList })
+          map((entities) =>
+            fromMarvelActions.getCharactersAllSuccess({ entities })
           ),
           catchError(({ message }) =>
             of(fromMarvelActions.getCharactersAllFail({ message }))
@@ -36,8 +36,8 @@ export class AppEffects {
       mergeMap(({ character }) =>
         this.marvelService.getCharacterListBySearch(character).pipe(
           map((list) => list?.data?.results),
-          map((selectedList) =>
-            fromMarvelActions.getCharacterListBySearchSuccess({ selectedList })
+          map((entities) =>
+            fromMarvelActions.getCharacterListBySearchSuccess({ entities })
           ),
           catchError(({ message }) =>
             of(fromMarvelActions.getCharacterListBySearchFail({ message }))
@@ -53,8 +53,8 @@ export class AppEffects {
       mergeMap(({ id }) =>
         this.marvelService.getCharacterById(id).pipe(
           map((list) => list?.data?.results),
-          map((selectedList) =>
-            fromMarvelActions.getCharacterByIdSuccess({ selectedList })
+          map((entities) =>
+            fromMarvelActions.getCharacterByIdSuccess({ entities })
           ),
           catchError(({ message }) =>
             of(fromMarvelActions.getCharacterByIdFail({ message }))

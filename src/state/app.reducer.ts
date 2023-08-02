@@ -8,38 +8,66 @@ import {
   getCharacterListBySearchFail,
 } from "./app.actions";
 import { IApp } from "./app.interface";
+import { storeListInitialState } from "../utils/store-utils";
 
 export const userFeatureKey = "AppState";
 
 export const initialAppState: IApp = {
-  authenticationMessage: "",
-  charList: [],
-  selectedList: [],
+  charList: storeListInitialState,
+  selectedList: storeListInitialState,
 };
 
 export const reducer = createReducer(
   initialAppState as IApp,
   on(getCharactersAll, (state) => ({
     ...state,
+    charList: {
+      ...state.charList,
+      loading: true,
+      error: false,
+    },
   })),
-  on(getCharactersAllSuccess, (state, { charList }) => ({
+  on(getCharactersAllSuccess, (state, { entities }) => ({
     ...state,
-    charList,
+    charList: {
+      ...state.charList,
+      entities,
+      loading: false,
+      error: false,
+    },
   })),
-  on(getCharactersAllFail, (state, { message }) => ({
+  on(getCharactersAllFail, (state) => ({
     ...state,
-    authenticationMessage: message,
+    charList: {
+      ...state.charList,
+      loading: false,
+      error: true,
+    },
   })),
   on(getCharacterListBySearch, (state) => ({
     ...state,
+    selectedList: {
+      ...state.selectedList,
+      loading: true,
+      error: false,
+    },
   })),
-  on(getCharacterListBySearchSuccess, (state, { selectedList }) => ({
+  on(getCharacterListBySearchSuccess, (state, { entities }) => ({
     ...state,
-    selectedList,
+    selectedList: {
+      ...state.selectedList,
+      entities,
+      loading: false,
+      error: false,
+    },
   })),
-  on(getCharacterListBySearchFail, (state, { message }) => ({
+  on(getCharacterListBySearchFail, (state) => ({
     ...state,
-    authenticationMessage: message,
+    selectedList: {
+      ...state.selectedList,
+      loading: false,
+      error: true,
+    },
   }))
 );
 
