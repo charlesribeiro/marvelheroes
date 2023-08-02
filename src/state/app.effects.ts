@@ -29,4 +29,21 @@ export class AppEffects {
       )
     )
   );
+
+  loadCharacter$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromMarvelActions.getCharacter),
+      mergeMap(({ character }) =>
+        this.marvelService.getCharacterListBySearch(character).pipe(
+          map((list) => list?.data?.results),
+          map((selectedList) =>
+            fromMarvelActions.getCharacterSuccess({ selectedList })
+          ),
+          catchError((errorMessage) =>
+            of(fromMarvelActions.getCharacterFail({ errorMessage }))
+          )
+        )
+      )
+    )
+  );
 }

@@ -3,16 +3,18 @@ import {
   getCharactersAll,
   getCharactersAllSuccess,
   getCharactersAllFail,
+  getCharacterListBySearch,
+  getCharacterListBySearchSuccess,
+  getCharacterListBySearchFail,
 } from "./app.actions";
 import { IApp } from "./app.interface";
 
 export const userFeatureKey = "AppState";
 
 export const initialAppState: IApp = {
-  username: "",
-  password: "",
   authenticationMessage: "",
-  characterList: [],
+  charList: [],
+  selectedList: [],
 };
 
 export const reducer = createReducer(
@@ -22,9 +24,20 @@ export const reducer = createReducer(
   })),
   on(getCharactersAllSuccess, (state, { charList }) => ({
     ...state,
-    characterList: charList,
+    charList,
   })),
   on(getCharactersAllFail, (state, { errorMessage }) => ({
+    ...state,
+    authenticationMessage: errorMessage,
+  })),
+  on(getCharacterListBySearch, (state) => ({
+    ...state,
+  })),
+  on(getCharacterListBySearchSuccess, (state, { selectedList }) => ({
+    ...state,
+    selectedList,
+  })),
+  on(getCharacterListBySearchFail, (state, { errorMessage }) => ({
     ...state,
     authenticationMessage: errorMessage,
   }))
