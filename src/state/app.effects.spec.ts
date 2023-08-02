@@ -10,10 +10,7 @@ import { Action } from "@ngrx/store";
 import { cold, hot } from "jasmine-marbles";
 import * as fromAppActions from "../state/app.actions";
 import { MarvelService } from "../app/services/marvel.service";
-import {
-  CharacterData,
-  CharacterListAPI,
-} from "../app/models/characterData.interface";
+import { mockAPI, mockChars, mockError } from "../utils/marvel-test.utils";
 
 describe("AppEffects", () => {
   let actions$: Observable<Action>;
@@ -43,47 +40,23 @@ describe("AppEffects", () => {
         .spyOn(marvelService, "getCharactersAll")
         .mockReturnValue(of(mockAPI));
       actions$ = hot("a", { a: fromAppActions.getCharactersAll() });
+
       const expected$ = cold("b", {
         b: fromAppActions.getCharactersAllSuccess({ charList: mockChars }),
       });
-
-      expect(effects.loadCharacters$).toBeObservable(expected$);
+      expect(effects.loadCharactersAll$).toBeObservable(expected$);
     });
   });
 
   it("should return error action", () => {
-    const error = "error test";
     jest
       .spyOn(marvelService, "getCharactersAll")
-      .mockReturnValue(throwError(error));
-
+      .mockReturnValue(throwError(mockError));
     actions$ = hot("a", { a: fromAppActions.getCharactersAll() });
-    const expected$ = cold("b", {
-      b: fromAppActions.getCharactersAllFail({ errorMessage: "error test" }),
-    });
 
-    expect(effects.loadCharacters$).toBeObservable(expected$);
+    const expected$ = cold("b", {
+      b: fromAppActions.getCharactersAllFail({ message: "error test" }),
+    });
+    expect(effects.loadCharactersAll$).toBeObservable(expected$);
   });
 });
-
-const mockChars: CharacterData[] = [
-  {
-    id: 1,
-    name: "nono",
-    description: "nono",
-    thumbnail: { path: "", extension: "" },
-    resourceURI: "nono",
-  },
-];
-
-const mockAPI: CharacterListAPI = {
-  code: 1,
-  status: "ok",
-  data: {
-    offset: 1,
-    limit: 1,
-    total: 1,
-    count: 1,
-    results: mockChars,
-  },
-};

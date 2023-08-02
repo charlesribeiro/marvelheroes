@@ -13,7 +13,7 @@ export class AppEffects {
     private marvelService: MarvelService
   ) {}
 
-  loadCharacters$ = createEffect(() =>
+  loadCharactersAll$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromMarvelActions.getCharactersAll),
       mergeMap(() =>
@@ -22,8 +22,8 @@ export class AppEffects {
           map((charList) =>
             fromMarvelActions.getCharactersAllSuccess({ charList })
           ),
-          catchError((errorMessage) =>
-            of(fromMarvelActions.getCharactersAllFail({ errorMessage }))
+          catchError(({ message }) =>
+            of(fromMarvelActions.getCharactersAllFail({ message }))
           )
         )
       )
@@ -39,8 +39,8 @@ export class AppEffects {
           map((selectedList) =>
             fromMarvelActions.getCharacterListBySearchSuccess({ selectedList })
           ),
-          catchError((errorMessage) =>
-            of(fromMarvelActions.getCharacterListBySearchFail({ errorMessage }))
+          catchError(({ message }) =>
+            of(fromMarvelActions.getCharacterListBySearchFail({ message }))
           )
         )
       )
@@ -56,8 +56,8 @@ export class AppEffects {
           map((selectedList) =>
             fromMarvelActions.getCharacterByIdSuccess({ selectedList })
           ),
-          catchError((errorMessage) =>
-            of(fromMarvelActions.getCharacterByIdFail({ errorMessage }))
+          catchError(({ message }) =>
+            of(fromMarvelActions.getCharacterByIdFail({ message }))
           )
         )
       )

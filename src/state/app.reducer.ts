@@ -26,9 +26,9 @@ export const reducer = createReducer(
     ...state,
     charList,
   })),
-  on(getCharactersAllFail, (state, { errorMessage }) => ({
+  on(getCharactersAllFail, (state, { message }) => ({
     ...state,
-    authenticationMessage: errorMessage,
+    authenticationMessage: message,
   })),
   on(getCharacterListBySearch, (state) => ({
     ...state,
@@ -37,9 +37,9 @@ export const reducer = createReducer(
     ...state,
     selectedList,
   })),
-  on(getCharacterListBySearchFail, (state, { errorMessage }) => ({
+  on(getCharacterListBySearchFail, (state, { message }) => ({
     ...state,
-    authenticationMessage: errorMessage,
+    authenticationMessage: message,
   }))
 );
 
