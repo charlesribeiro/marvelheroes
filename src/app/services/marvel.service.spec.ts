@@ -30,7 +30,41 @@ describe("MarvelService", () => {
       });
 
       const mockReq = httpMock.expectOne((request) =>
-        request.url.includes("/characters?limit=")
+        request.url.includes(
+          "http://gateway.marvel.com/v1/public/characters?limit=50&ts="
+        )
+      );
+      mockReq.flush({});
+    });
+  });
+
+  describe("getCharacterListBySearch", () => {
+    it("should invoke the getCharacterListBySearch API", (done) => {
+      service.getCharacterListBySearch("abc").subscribe(() => {
+        expect(mockReq.request.method).toBe("GET");
+        done();
+      });
+
+      const mockReq = httpMock.expectOne((request) =>
+        request.url.includes(
+          "http://gateway.marvel.com/v1/public/characters?nameStartsWith=abc"
+        )
+      );
+      mockReq.flush({});
+    });
+  });
+
+  describe("getCharactersAll", () => {
+    it("should invoke the getCharacter by id API", (done) => {
+      service.getCharacterById(123).subscribe(() => {
+        expect(mockReq.request.method).toBe("GET");
+        done();
+      });
+
+      const mockReq = httpMock.expectOne((request) =>
+        request.url.includes(
+          "http://gateway.marvel.com/v1/public/characters/123?&ts="
+        )
       );
       mockReq.flush({});
     });

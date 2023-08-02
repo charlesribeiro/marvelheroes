@@ -30,6 +30,12 @@ export class MarvelService {
     );
   }
 
+  getCharacterById(id: number): Observable<CharacterListAPI> {
+    return this.http.get<CharacterListAPI>(
+      `${this.marvelCDN}/characters/${id}?${this.getPayload()}`
+    );
+  }
+
   private getCurrentTimestamp(): number {
     return Date.now();
   }

@@ -15,5 +15,6 @@ export class LoginComponent implements OnInit {
     this.store.dispatch(
       loginActions.getCharacterListBySearch({ character: "Adam Destine" })
     );
+    this.store.dispatch(loginActions.getCharacterById({ id: 1011334 }));
   }
 }

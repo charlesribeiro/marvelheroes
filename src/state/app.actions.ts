@@ -29,3 +29,18 @@ export const getCharacterListBySearchFail = createAction(
   "[Mavel API] get character by search Fail Action",
   props<{ errorMessage: string }>()
 );
+
+export const getCharacterById = createAction(
+  "[Marvel API] get character by id Action",
+  props<{ id: number }>()
+);
+
+export const getCharacterByIdSuccess = createAction(
+  "[Marvel API] get character by id Success Action",
+  props<{ selectedList: CharacterData[] }>()
+);
+
+export const getCharacterByIdFail = createAction(
+  "[Mavel API] get character by id Fail Action",
+  props<{ errorMessage: string }>()
+);

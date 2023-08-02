@@ -30,7 +30,7 @@ export class AppEffects {
     )
   );
 
-  loadCharacter$ = createEffect(() =>
+  loadCharacterBySearch$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromMarvelActions.getCharacterListBySearch),
       mergeMap(({ character }) =>
@@ -41,6 +41,23 @@ export class AppEffects {
           ),
           catchError((errorMessage) =>
             of(fromMarvelActions.getCharacterListBySearchFail({ errorMessage }))
+          )
+        )
+      )
+    )
+  );
+
+  loadCharacterById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromMarvelActions.getCharacterById),
+      mergeMap(({ id }) =>
+        this.marvelService.getCharacterById(id).pipe(
+          map((list) => list?.data?.results),
+          map((selectedList) =>
+            fromMarvelActions.getCharacterByIdSuccess({ selectedList })
+          ),
+          catchError((errorMessage) =>
+            of(fromMarvelActions.getCharacterByIdFail({ errorMessage }))
           )
         )
       )
