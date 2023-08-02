@@ -1,6 +1,6 @@
 import { createEffect } from "@ngrx/effects";
 import { Actions } from "@ngrx/effects";
-import { MarvelService } from "src/app/services/marvel.service";
+import { MarvelService } from "../app/services/marvel.service";
 import * as fromMarvelActions from "../state/app.actions";
 import { catchError, map, mergeMap, of } from "rxjs";
 import { ofType } from "@ngrx/effects";

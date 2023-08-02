@@ -54,7 +54,7 @@ describe("MarvelService", () => {
     });
   });
 
-  describe("getCharactersAll", () => {
+  describe("getCharacterById", () => {
     it("should invoke the getCharacter by id API", (done) => {
       service.getCharacterById(123).subscribe(() => {
         expect(mockReq.request.method).toBe("GET");

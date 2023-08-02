@@ -11,7 +11,7 @@ export const getCharactersAllSuccess = createAction(
 );
 
 export const getCharactersAllFail = createAction(
-  "[Mavel API] get characters Fail Action",
+  "[Marvel API] get characters Fail Action",
   props<{ errorMessage: string }>()
 );
 
@@ -26,7 +26,7 @@ export const getCharacterListBySearchSuccess = createAction(
 );
 
 export const getCharacterListBySearchFail = createAction(
-  "[Mavel API] get character by search Fail Action",
+  "[Marvel API] get character by search Fail Action",
   props<{ errorMessage: string }>()
 );
 
@@ -41,6 +41,6 @@ export const getCharacterByIdSuccess = createAction(
 );
 
 export const getCharacterByIdFail = createAction(
-  "[Mavel API] get character by id Fail Action",
+  "[Marvel API] get character by id Fail Action",
   props<{ errorMessage: string }>()
 );
