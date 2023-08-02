@@ -26,6 +26,9 @@ describe("AppEffects", () => {
         provideMockStore({ initialState }),
       ],
     });
+  });
+
+  beforeEach(() => {
     effects = TestBed.inject<AppEffects>(AppEffects);
     marvelService = TestBed.inject(MarvelService);
   });
@@ -46,17 +49,85 @@ describe("AppEffects", () => {
       });
       expect(effects.loadCharactersAll$).toBeObservable(expected$);
     });
+
+    it("should return error action", () => {
+      jest
+        .spyOn(marvelService, "getCharactersAll")
+        .mockReturnValue(throwError(() => new Error(mockError.message)));
+      actions$ = hot("a", { a: fromAppActions.getCharactersAll() });
+
+      const expected$ = cold("b", {
+        b: fromAppActions.getCharactersAllFail({ message: mockError.message }),
+      });
+      expect(effects.loadCharactersAll$).toBeObservable(expected$);
+    });
   });
 
-  it("should return error action", () => {
-    jest
-      .spyOn(marvelService, "getCharactersAll")
-      .mockReturnValue(throwError(mockError));
-    actions$ = hot("a", { a: fromAppActions.getCharactersAll() });
+  describe("loadCharacterBySearch$", () => {
+    it("should return success action", () => {
+      jest
+        .spyOn(marvelService, "getCharacterListBySearch")
+        .mockReturnValue(of(mockAPI));
+      actions$ = hot("a", {
+        a: fromAppActions.getCharacterListBySearch({ character: "abc" }),
+      });
 
-    const expected$ = cold("b", {
-      b: fromAppActions.getCharactersAllFail({ message: "error test" }),
+      const expected$ = cold("b", {
+        b: fromAppActions.getCharacterListBySearchSuccess({
+          selectedList: mockChars,
+        }),
+      });
+      expect(effects.loadCharacterBySearch$).toBeObservable(expected$);
     });
-    expect(effects.loadCharactersAll$).toBeObservable(expected$);
+
+    it("should return error action", () => {
+      jest
+        .spyOn(marvelService, "getCharacterListBySearch")
+        .mockReturnValue(throwError(() => new Error(mockError.message)));
+      actions$ = hot("a", {
+        a: fromAppActions.getCharacterListBySearch({ character: "error" }),
+      });
+
+      const expected$ = cold("b", {
+        b: fromAppActions.getCharacterListBySearchFail({
+          message: mockError.message,
+        }),
+      });
+      expect(effects.loadCharacterBySearch$).toBeObservable(expected$);
+    });
+  });
+
+  describe("loadCharacterById$", () => {
+    it("should return success action", () => {
+      jest
+        .spyOn(marvelService, "getCharacterById")
+        .mockReturnValue(of(mockAPI));
+      actions$ = hot("a", {
+        a: fromAppActions.getCharacterById({ id: 123 }),
+      });
+
+      const expected$ = cold("b", {
+        b: fromAppActions.getCharacterByIdSuccess({
+          selectedList: mockChars,
+        }),
+      });
+      expect(effects.loadCharacterById$).toBeObservable(expected$);
+    });
+
+    it("should return error action", () => {
+      jest
+        .spyOn(marvelService, "getCharacterById")
+        .mockReturnValue(throwError(() => new Error(mockError.message)));
+      actions$ = hot("a", {
+        a: fromAppActions.getCharacterById({ id: 123 }),
+      });
+
+      const expected$ = cold("b", {
+        b: fromAppActions.getCharacterByIdFail({
+          message: mockError.message,
+        }),
+      });
+      expect(effects.loadCharacterById$).toBeObservable(expected$);
+    });
   });
 });
