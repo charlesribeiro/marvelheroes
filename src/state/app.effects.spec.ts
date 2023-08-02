@@ -45,7 +45,7 @@ describe("AppEffects", () => {
       actions$ = hot("a", { a: fromAppActions.getCharactersAll() });
 
       const expected$ = cold("b", {
-        b: fromAppActions.getCharactersAllSuccess({ charList: mockChars }),
+        b: fromAppActions.getCharactersAllSuccess({ entities: mockChars }),
       });
       expect(effects.loadCharactersAll$).toBeObservable(expected$);
     });
@@ -74,7 +74,7 @@ describe("AppEffects", () => {
 
       const expected$ = cold("b", {
         b: fromAppActions.getCharacterListBySearchSuccess({
-          selectedList: mockChars,
+          entities: mockChars,
         }),
       });
       expect(effects.loadCharacterBySearch$).toBeObservable(expected$);
@@ -108,7 +108,7 @@ describe("AppEffects", () => {
 
       const expected$ = cold("b", {
         b: fromAppActions.getCharacterByIdSuccess({
-          selectedList: mockChars,
+          entities: mockChars,
         }),
       });
       expect(effects.loadCharacterById$).toBeObservable(expected$);
