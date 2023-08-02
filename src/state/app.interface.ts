@@ -1,10 +1,9 @@
 import { CharacterData } from "../app/models/characterData.interface";
 
 export interface IApp {
-  username: string;
-  password: string;
   authenticationMessage: string;
-  characterList: CharacterData[];
+  charList: CharacterData[];
+  selectedList: CharacterData[];
 }
 
 export interface IAppState {

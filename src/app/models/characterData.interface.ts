@@ -22,3 +22,8 @@ export interface Thumbnail {
   path: string;
   extension: string;
 }
+
+export interface CharacterError {
+  code: string;
+  message: string;
+}

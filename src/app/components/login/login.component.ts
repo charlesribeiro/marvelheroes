@@ -12,5 +12,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loginActions.getCharactersAll());
+    this.store.dispatch(
+      loginActions.getCharacterListBySearch({ character: "Adam Destine" })
+    );
+    this.store.dispatch(loginActions.getCharacterById({ id: 1011334 }));
   }
 }

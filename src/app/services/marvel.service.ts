@@ -15,12 +15,38 @@ export class MarvelService {
   private resultLimit = 50;
 
   getCharactersAll(): Observable<CharacterListAPI> {
-    const currentTimestamp = Date.now();
-    const hashedStrings = Md5.hashStr(
-      `${currentTimestamp}${privateKey}${publicKey}`
+    return this.http.get<CharacterListAPI>(
+      `${this.marvelCDN}/characters?limit=${
+        this.resultLimit
+      }${this.getPayload()}`
     );
-    const getCharURL = `${this.marvelCDN}/characters?limit=${this.resultLimit}&ts=${currentTimestamp}&apikey=${publicKey}&hash=${hashedStrings}`;
+  }
 
-    return this.http.get<CharacterListAPI>(getCharURL);
+  getCharacterListBySearch(inputName: string): Observable<CharacterListAPI> {
+    return this.http.get<CharacterListAPI>(
+      `${
+        this.marvelCDN
+      }/characters?nameStartsWith=${inputName}${this.getPayload()}`
+    );
+  }
+
+  getCharacterById(id: number): Observable<CharacterListAPI> {
+    return this.http.get<CharacterListAPI>(
+      `${this.marvelCDN}/characters/${id}?${this.getPayload()}`
+    );
+  }
+
+  private getCurrentTimestamp(): number {
+    return Date.now();
+  }
+
+  private getHashedStrings(): string {
+    return Md5.hashStr(
+      `${this.getCurrentTimestamp()}${privateKey}${publicKey}`
+    );
+  }
+
+  private getPayload(): string {
+    return `&ts=${this.getCurrentTimestamp()}&apikey=${publicKey}&hash=${this.getHashedStrings()}`;
   }
 }
