@@ -3,7 +3,7 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./components/login/login.component";
 import { provideMockStore } from "@ngrx/store/testing";
-import { initialAppState as initialState } from "src/state/app.reducer";
+import { initialAppState as initialState } from "../state/app.reducer";
 
 describe("AppComponent", () => {
   let fixture: ComponentFixture<AppComponent>;
