@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { CharacterData } from "src/app/models/characterData.interface";
+import { CharacterData } from "../app/models/characterData.interface";
 
 export const getCharactersAll = createAction(
   "[Marvel API] get characters Action"
