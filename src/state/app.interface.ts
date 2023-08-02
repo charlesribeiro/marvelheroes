@@ -1,4 +1,4 @@
-import { CharacterData } from "src/app/models/characterData.interface";
+import { CharacterData } from "../app/models/characterData.interface";
 
 export interface IApp {
   authenticationMessage: string;

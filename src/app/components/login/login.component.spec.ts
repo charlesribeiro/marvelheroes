@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { provideMockStore } from "@ngrx/store/testing";
 
 import { LoginComponent } from "./login.component";
-import { initialAppState } from "src/state/app.reducer";
+import { initialAppState } from "../../../state/app.reducer";
 
 describe("LoginComponent", () => {
   let component: LoginComponent;
