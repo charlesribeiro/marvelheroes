@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { Md5 } from "ts-md5";
-import { privateKey, publicKey } from "../../../.env/keys";
 import { CharacterListAPI } from "../models/characterData.interface";
+import { privateKey, publicKey } from "../../key.ts";
 
 @Injectable({
   providedIn: "root",
