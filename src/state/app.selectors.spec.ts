@@ -19,7 +19,7 @@ describe("AppSelectors", () => {
   };
   const getAppState = (state: IAppState): IApp => state.AppState;
 
-  it("should select select all characters", () => {
+  it("should select all characters", () => {
     const result = fromAppSelectors.selectAllCharacters.projector(
       getAppState(initialState)
     );
@@ -28,7 +28,7 @@ describe("AppSelectors", () => {
     expect(result[0].id).toEqual(mockChars[0].id);
   });
 
-  it("should select select selected characters", () => {
+  it("should select selected characters", () => {
     const result = fromAppSelectors.selectSelectedCharacters.projector(
       getAppState(initialState)
     );
