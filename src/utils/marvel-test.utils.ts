@@ -1,10 +1,10 @@
 import {
-  CharacterData,
+  CharData,
   CharacterListAPI,
   CharacterError,
 } from "../app/models/characterData.interface";
 
-export const mockChars: CharacterData[] = [
+export const mockChars: CharData[] = [
   {
     id: 1,
     name: "nono",
