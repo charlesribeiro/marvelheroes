@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { Md5 } from "ts-md5";
 import { CharacterListAPI } from "../models/characterData.interface";
-import { privateKey, publicKey } from "../../key.ts";
+import { privateKey, publicKey } from "../../keys";
 
 @Injectable({
   providedIn: "root",
