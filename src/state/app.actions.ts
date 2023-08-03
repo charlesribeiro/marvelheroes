@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { CharacterData } from "../app/models/characterData.interface";
+import { CharData } from "../app/models/characterData.interface";
 
 export const getCharactersAll = createAction(
   "[Marvel API] get characters Action"
@@ -7,7 +7,7 @@ export const getCharactersAll = createAction(
 
 export const getCharactersAllSuccess = createAction(
   "[Marvel API] get characters Success Action",
-  props<{ entities: CharacterData[] }>()
+  props<{ entities: CharData[] }>()
 );
 
 export const getCharactersAllFail = createAction(
@@ -22,7 +22,7 @@ export const getCharacterListBySearch = createAction(
 
 export const getCharacterListBySearchSuccess = createAction(
   "[Marvel API] get character by search Success Action",
-  props<{ entities: CharacterData[] }>()
+  props<{ entities: CharData[] }>()
 );
 
 export const getCharacterListBySearchFail = createAction(
@@ -37,7 +37,7 @@ export const getCharacterById = createAction(
 
 export const getCharacterByIdSuccess = createAction(
   "[Marvel API] get character by id Success Action",
-  props<{ entities: CharacterData[] }>()
+  props<{ entities: CharData[] }>()
 );
 
 export const getCharacterByIdFail = createAction(

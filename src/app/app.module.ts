@@ -16,7 +16,6 @@ import { AppEffects } from "src/state/app.effects";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([AppEffects]),
     HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),

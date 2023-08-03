@@ -6,11 +6,11 @@ export interface CharacterListAPI {
     limit: number;
     total: number;
     count: number;
-    results: CharacterData[];
+    results: CharData[];
   };
 }
 
-export interface CharacterData {
+export interface CharData {
   id: number;
   name: string;
   description: string;
