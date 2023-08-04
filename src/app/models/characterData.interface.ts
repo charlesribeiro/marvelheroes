@@ -16,7 +16,8 @@ export interface CharData {
   description: string;
   thumbnail: Thumbnail;
   resourceURI: string;
-  series: Series;
+  series: SeriesEvents;
+  events: SeriesEvents;
 }
 
 export interface Thumbnail {
@@ -29,13 +30,13 @@ export interface CharacterError {
   message: string;
 }
 
-export interface Series {
+export interface SeriesEvents {
   available: number;
   collectionURI: string;
-  items: SeriesItem[];
+  items: SeriesEventsItem[];
 }
 
-export interface SeriesItem {
+export interface SeriesEventsItem {
   resourceURI: string;
   name: string;
 }

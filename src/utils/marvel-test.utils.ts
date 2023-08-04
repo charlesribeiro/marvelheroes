@@ -17,7 +17,17 @@ export const mockChars: CharData[] = [
       items: [
         {
           resourceURI: "123",
-          name: "mockName",
+          name: "mockSeries",
+        },
+      ],
+    },
+    events: {
+      available: 1,
+      collectionURI: "nono",
+      items: [
+        {
+          resourceURI: "123",
+          name: "mockEvent",
         },
       ],
     },

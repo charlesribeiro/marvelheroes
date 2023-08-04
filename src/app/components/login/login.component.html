@@ -1,5 +1,15 @@
-<ul *ngFor="let char of list">
-    <li>
-        <app-character-list-item [character]="char"></app-character-list-item>
-    </li>
-</ul>
+<div *ngIf="(loadingAllCharacters$ | async)">
+    Loader
+</div>
+
+<div *ngIf="(errorAllCharacters$ | async)">
+    Error
+</div>
+
+<ng-container *ngIf="(loadingAllCharacters$ | async)===false &&  (errorAllCharacters$ | async)===false">
+    <ul *ngFor="let char of list">
+        <li>
+            <app-character-list-item [character]="char" (selectedId)="selectedId($event)"></app-character-list-item>
+        </li>
+    </ul>
+</ng-container>

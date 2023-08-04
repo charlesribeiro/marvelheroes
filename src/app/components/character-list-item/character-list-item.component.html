@@ -1,15 +1,17 @@
-<div class="flex h-32" *ngIf="!!character">
-    <div class="flex w-48">
-        <img [src]="character.thumbnail.path + '.'+ character.thumbnail.extension" [alt]="character.name" width="48"
-            height="48">
-        <b>{{character.name}}</b>
+<div class="flex h-32 cursor-pointer m-4 rounded-md" *ngIf="!!character" (click)="showDetails()">
+    <div class="flex items-center flex-w w-96 content-center mx-24">
+        <img class="m-4" [src]="fullImagePath" [alt]="character.name" width="48" height="48">
+        <span>{{character.name}}</span>
     </div>
-    <div class="w-64">
-        <ng-container *ngIf="!!character?.series?.items">
-            <ul *ngFor="let item of character.series.items">
-                <li>{{item.name}}</li>
-            </ul>
-        </ng-container>
+    <div class="w-64 items-center ">
+        <ul *ngFor="let item of top3SeriesItems">
+            <li>{{item.name}}</li>
+        </ul>
     </div>
 
+    <div class="w-64 content-center">
+        <ul *ngFor="let item of top3EventsItems">
+            <li>{{item.name}}</li>
+        </ul>
+    </div>
 </div>
