@@ -1,0 +1,15 @@
+<div class="flex h-32" *ngIf="!!character">
+    <div class="flex w-48">
+        <img [src]="character.thumbnail.path + '.'+ character.thumbnail.extension" [alt]="character.name" width="48"
+            height="48">
+        <b>{{character.name}}</b>
+    </div>
+    <div class="w-64">
+        <ng-container *ngIf="!!character?.series?.items">
+            <ul *ngFor="let item of character.series.items">
+                <li>{{item.name}}</li>
+            </ul>
+        </ng-container>
+    </div>
+
+</div>

@@ -1,3 +1,5 @@
 <ul *ngFor="let char of list">
-    <li>{{char.name}}</li>
+    <li>
+        <app-character-list-item [character]="char"></app-character-list-item>
+    </li>
 </ul>

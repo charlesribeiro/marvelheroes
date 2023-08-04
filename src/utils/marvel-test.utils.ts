@@ -11,6 +11,16 @@ export const mockChars: CharData[] = [
     description: "nono",
     thumbnail: { path: "mypath", extension: ".jpg" },
     resourceURI: "nono",
+    series: {
+      available: 1,
+      collectionURI: "nono",
+      items: [
+        {
+          resourceURI: "123",
+          name: "mockName",
+        },
+      ],
+    },
   },
 ];
 

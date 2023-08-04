@@ -11,7 +11,7 @@ import { CharData } from "../../models/characterData.interface";
   templateUrl: "./login.component.html",
 })
 export class LoginComponent implements OnInit {
-  loadingAllCharacters$!: Observable<CharData[]>;
+  loadingAllCharacters$: Observable<CharData[]>;
 
   list: CharData[] = [];
 

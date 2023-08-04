@@ -10,9 +10,10 @@ import { metaReducers, reducers } from "src/state";
 import { LoginComponent } from "./components/login/login.component";
 import { HttpClientModule } from "@angular/common/http";
 import { AppEffects } from "src/state/app.effects";
+import { CharacterListItemComponent } from "./components/character-list-item/character-list-item.component";
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, CharacterListItemComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
