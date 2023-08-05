@@ -27,9 +27,13 @@ describe("CharacterListItemComponent", () => {
 
   it(`should show character name`, () => {
     const name = fixture.debugElement.query(
-      By.css(".flex > .w-48 > b")
+      By.css(".cursor-pointer > .flex-w > span")
     ).nativeElement;
 
     expect(name.textContent).toContain("nono");
+  });
+
+  it("should return the correct image path", () => {
+    expect(component.fullImagePath).toEqual("mypath.jpg");
   });
 });
