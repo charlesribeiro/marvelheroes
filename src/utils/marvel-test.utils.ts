@@ -9,7 +9,7 @@ export const mockChars: CharData[] = [
     id: 1,
     name: "nono",
     description: "nono",
-    thumbnail: { path: "mypath", extension: ".jpg" },
+    thumbnail: { path: "mypath", extension: "jpg" },
     resourceURI: "nono",
     series: {
       available: 1,
