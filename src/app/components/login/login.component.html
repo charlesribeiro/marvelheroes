@@ -4,10 +4,10 @@
     </div>
 
     <div *ngIf="(errorAllCharacters$ | async)">
-        Error
+        <app-error-component></app-error-component>
     </div>
 
-    <ng-container *ngIf="(loadingAllCharacters$ | async)===false &&  (errorAllCharacters$ | async)===false">
+    <ng-container *ngIf="(loadingAllCharacters$ | async)===false && (errorAllCharacters$ | async)===false">
         <ul *ngFor="let char of list">
             <li>
                 <app-character-list-item [character]="char" (selectedId)="selectedId($event)"></app-character-list-item>

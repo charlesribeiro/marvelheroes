@@ -11,9 +11,10 @@ import { LoginComponent } from "./components/login/login.component";
 import { HttpClientModule } from "@angular/common/http";
 import { AppEffects } from "src/state/app.effects";
 import { CharacterListItemComponent } from "./components/character-list-item/character-list-item.component";
+import { ErrorComponentComponent } from './shared/error-component/error-component.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CharacterListItemComponent],
+  declarations: [AppComponent, LoginComponent, CharacterListItemComponent, ErrorComponentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
