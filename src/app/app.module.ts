@@ -11,10 +11,21 @@ import { LoginComponent } from "./components/login/login.component";
 import { HttpClientModule } from "@angular/common/http";
 import { AppEffects } from "src/state/app.effects";
 import { CharacterListItemComponent } from "./components/character-list-item/character-list-item.component";
-import { ErrorComponentComponent } from './shared/error-component/error-component.component';
+import { GlobalErrorComponent } from "./shared/error/error.component";
+import { LoaderComponent } from "./shared/loader/loader.component";
+import { SearchBarComponent } from './shared/search-bar/search-bar.component';
+import { CharacterListComponent } from './components/character-list/character-list.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CharacterListItemComponent, ErrorComponentComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    CharacterListItemComponent,
+    GlobalErrorComponent,
+    LoaderComponent,
+    SearchBarComponent,
+    CharacterListComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

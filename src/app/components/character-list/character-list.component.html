@@ -1,0 +1,5 @@
+<ul *ngFor="let char of list">
+    <li>
+        <app-character-list-item [character]="char" (selectedId)="selectedId.emit(char.id)"></app-character-list-item>
+    </li>
+</ul>

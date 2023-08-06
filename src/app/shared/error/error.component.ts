@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
-  selector: "app-error-component",
-  templateUrl: "./error-component.component.html",
-  styleUrls: ["./error-component.component.scss"],
+  selector: "app-error",
+  templateUrl: "./error.component.html",
 })
-export class ErrorComponentComponent {
+export class GlobalErrorComponent {
   @Input() title = "Error";
   @Input() text = "Oops... something is not right";
   @Input() retryFeature = false;

@@ -19,10 +19,6 @@ export class CharacterListItemComponent {
   @Input() character: CharData;
   @Output() selectedId = new EventEmitter<number>();
 
-  showDetails(): void {
-    this.selectedId.emit(this.character.id);
-  }
-
   get top3SeriesItems(): SeriesEventsItem[] {
     return this.character?.series?.items.slice(0, 3);
   }

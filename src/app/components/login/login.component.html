@@ -1,17 +1,10 @@
 <div class="grid h-screen place-items-center">
-    <div *ngIf="(loadingAllCharacters$ | async)">
-        Loader
-    </div>
+    <app-search-bar></app-search-bar>
 
-    <div *ngIf="(errorAllCharacters$ | async)">
-        <app-error-component></app-error-component>
-    </div>
+    <app-loader *ngIf="(loadingAllCharacters$ | async)"></app-loader>
 
-    <ng-container *ngIf="(loadingAllCharacters$ | async)===false && (errorAllCharacters$ | async)===false">
-        <ul *ngFor="let char of list">
-            <li>
-                <app-character-list-item [character]="char" (selectedId)="selectedId($event)"></app-character-list-item>
-            </li>
-        </ul>
-    </ng-container>
+    <app-error *ngIf="(errorAllCharacters$ | async)"></app-error>
+
+    <app-character-list *ngIf="(loadingAllCharacters$ | async)===false && (errorAllCharacters$ | async)===false"
+        (selectedId)="selectedId($event)" [list]="list"></app-character-list>
 </div>

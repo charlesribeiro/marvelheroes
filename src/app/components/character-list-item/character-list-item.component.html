@@ -1,4 +1,4 @@
-<div class="flex h-32 cursor-pointer m-4 rounded-md" *ngIf="!!character" (click)="showDetails()">
+<div class="flex h-32 cursor-pointer m-4 rounded-md" *ngIf="!!character" (click)="this.selectedId.emit(character.id)">
     <div class="flex items-center flex-w w-96 content-center mx-24">
         <img class="m-4" [src]="fullImagePath" [alt]="character.name" width="48" height="48">
         <span>{{character.name}}</span>
