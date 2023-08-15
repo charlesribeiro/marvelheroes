@@ -1,0 +1,16 @@
+<td class="flex items-center flex-w w-96 content-center mx-24">
+    <img class="m-4 max-w-md" [src]="fullImagePath" [alt]="character.name" width="48" height="48">
+    <span>{{character.name}}</span>
+</td>
+
+<td class="w-64 items-center ">
+    <ul *ngFor="let item of top3SeriesItems">
+        <li>{{item.name}}</li>
+    </ul>
+</td>
+
+<td class="w-64 content-center">
+    <ul *ngFor="let event of top3EventsItems">
+        <li>{{event.name}}</li>
+    </ul>
+</td>

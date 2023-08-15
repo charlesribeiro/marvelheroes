@@ -1,0 +1,5 @@
+<table class="table-auto">
+    <tr *ngFor="let char of list">
+        <app-character-list-item [character]="char" (selectedId)="selectedId.emit(char.id)"></app-character-list-item>
+    </tr>
+</table>

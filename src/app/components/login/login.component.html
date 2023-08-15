@@ -1,3 +1,10 @@
-<ul *ngFor="let char of list">
-    <li>{{char.name}}</li>
-</ul>
+<div class="grid h-screen place-items-center">
+    <app-search-bar></app-search-bar>
+
+    <app-loader *ngIf="(loadingAllCharacters$ | async)"></app-loader>
+
+    <app-error *ngIf="(errorAllCharacters$ | async)"></app-error>
+
+    <app-character-list *ngIf="(loadingAllCharacters$ | async)===false && (errorAllCharacters$ | async)===false"
+        (selectedId)="selectedId($event)" [list]="list"></app-character-list>
+</div>
