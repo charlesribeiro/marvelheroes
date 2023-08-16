@@ -4,6 +4,7 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./components/login/login.component";
 import { provideMockStore } from "@ngrx/store/testing";
 import { initialAppState as initialState } from "../state/app.reducer";
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 describe("AppComponent", () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -14,6 +15,7 @@ describe("AppComponent", () => {
       imports: [RouterTestingModule],
       declarations: [AppComponent, LoginComponent],
       providers: [provideMockStore({ initialState })],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
   );
 

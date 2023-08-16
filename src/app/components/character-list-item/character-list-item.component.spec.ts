@@ -27,7 +27,7 @@ describe("CharacterListItemComponent", () => {
 
   it(`should show character name`, () => {
     const name = fixture.debugElement.query(
-      By.css(".cursor-pointer > .flex-w > span")
+      By.css(".flex-w > span")
     ).nativeElement;
 
     expect(name.textContent).toContain("nono");
