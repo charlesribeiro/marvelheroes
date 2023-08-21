@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CharacterListComponent } from './character-list.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 describe('CharacterListComponent', () => {
   let component: CharacterListComponent;
@@ -8,7 +10,9 @@ describe('CharacterListComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CharacterListComponent]
+      declarations: [CharacterListComponent],
+      imports: [InfiniteScrollModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     });
     fixture = TestBed.createComponent(CharacterListComponent);
     component = fixture.componentInstance;

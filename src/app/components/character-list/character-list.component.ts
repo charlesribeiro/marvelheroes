@@ -8,4 +8,8 @@ import { CharData } from "../../models/characterData.interface";
 export class CharacterListComponent {
   @Output() selectedId = new EventEmitter<number>();
   @Input() list: CharData[] = [];
+
+  onScroll(){
+    debugger;
+  }
 }

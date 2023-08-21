@@ -13,6 +13,7 @@ import { AppEffects } from "src/state/app.effects";
 import { CharacterListItemComponent } from "./components/character-list-item/character-list-item.component";
 import { CharacterListComponent } from "./components/character-list/character-list.component";
 import { SharedModule } from "./shared/shared.module";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SharedModule } from "./shared/shared.module";
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     AppRoutingModule,
     EffectsModule.forRoot([AppEffects]),
     HttpClientModule,
