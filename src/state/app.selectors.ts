@@ -32,3 +32,8 @@ export const selectSelectedCharactersError = createSelector(
   selectFeature,
   (appState: IApp) => appState.selectedList.error
 );
+
+export const selectPageSize = createSelector(
+  selectFeature,
+  (appState: IApp) => appState.charList.offset
+);

@@ -6,6 +6,8 @@ import {
 
 import { MarvelService } from "./marvel.service";
 import { mockAPI } from "../../utils/marvel-test.utils";
+import { provideMockStore } from "@ngrx/store/testing";
+import { initialAppState } from "../../state/app.reducer";
 
 describe("MarvelService", () => {
   let service: MarvelService;
@@ -14,7 +16,7 @@ describe("MarvelService", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [MarvelService],
+      providers: [MarvelService, provideMockStore({ initialState: initialAppState })],
     });
   });
 
@@ -41,7 +43,7 @@ describe("MarvelService", () => {
 
       const mockReq = httpMock.expectOne((request) =>
         request.url.includes(
-          "http://gateway.marvel.com/v1/public/characters?limit=50&ts="
+          "http://gateway.marvel.com/v1/public/characters?limit=50&offset=0&ts="
         )
       );
       mockReq.flush(mockAPI);
