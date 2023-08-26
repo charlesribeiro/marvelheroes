@@ -34,6 +34,7 @@ export const reducer = createReducer(
       entities,
       loading: false,
       error: false,
+      offset: state.charList.offset + 50,
     },
   })),
   on(getCharactersAllFail, (state) => ({

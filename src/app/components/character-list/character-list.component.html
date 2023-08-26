@@ -1,4 +1,4 @@
-<table infiniteScroll class="table-auto" [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+<table infiniteScroll class="table-auto" [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1"
     (scrolled)="onScroll()">
     <tr *ngFor="let char of list">
         <app-character-list-item [character]="char" (selectedId)="selectedId.emit(char.id)"></app-character-list-item>

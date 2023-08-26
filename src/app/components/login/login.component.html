@@ -6,5 +6,5 @@
     <app-error *ngIf="(errorAllCharacters$ | async)"></app-error>
 
     <app-character-list *ngIf="(loadingAllCharacters$ | async)===false && (errorAllCharacters$ | async)===false"
-        (selectedId)="selectedId($event)" [list]="list"></app-character-list>
+        (selectedId)="selectedId($event)" (scrolledDown)="scrolled()" [list]="list"></app-character-list>
 </div>

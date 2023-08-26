@@ -7,9 +7,10 @@ import { CharData } from "../../models/characterData.interface";
 })
 export class CharacterListComponent {
   @Output() selectedId = new EventEmitter<number>();
+  @Output() scrolledDown = new EventEmitter<void>();
   @Input() list: CharData[] = [];
 
-  onScroll(){
-    debugger;
+  onScroll() {
+    this.scrolledDown.emit();
   }
 }

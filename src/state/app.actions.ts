@@ -5,6 +5,10 @@ export const getCharactersAll = createAction(
   "[Marvel API] get characters Action"
 );
 
+export const getCharactersMore = createAction(
+  "[Marvel API] get characters more Action"
+);
+
 export const getCharactersAllSuccess = createAction(
   "[Marvel API] get characters Success Action",
   props<{ entities: CharData[] }>()

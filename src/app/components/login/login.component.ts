@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   list: CharData[] = [];
 
-  constructor(private store: Store<IApp>) {}
+  constructor(private store: Store<IApp>) { }
 
   ngOnInit(): void {
     this.store.dispatch(appActions.getCharactersAll());
@@ -40,5 +40,9 @@ export class LoginComponent implements OnInit {
 
   selectedId(id: number) {
     this.store.dispatch(appActions.getCharacterById({ id }));
+  }
+
+  scrolled() {
+    this.store.dispatch(appActions.getCharactersMore());
   }
 }

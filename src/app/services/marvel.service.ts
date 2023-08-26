@@ -26,9 +26,8 @@ export class MarvelService {
       .subscribe((offset) => (this.offset = offset));
   }
 
-
-
   getCharactersAll(): Observable<CharacterListAPI> {
+    debugger;
     return this.http.get<CharacterListAPI>(
       `${this.marvelCDN}/characters?limit=${this.resultLimit}&offset=${this.offset
       }${this.getPayload()}`
