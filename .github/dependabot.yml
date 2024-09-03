@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/" # Root directory, adjust if needed for monorepos
+    schedule:
+      interval: "daily" # You can also choose 'weekly', 'monthly', etc.
+    assignees:
+      - "charlesribeiro" # Replace with actual GitHub username(s)
+    reviewers:
+      - "charlesribeiro" # Replace with actual GitHub username(s)
+    labels:
+      - "dependencies"
+      - "yarn"
+      - "automated"
+    commit-message:
+      prefix: "deps" # You can customize this, e.g., "build", "chore"
+    open-pull-requests-limit: 10 # Limit the number of open Dependabot PRs
+    ignore:
+      - dependency-name: "chalk" # Example of dependency to ignore, adjust as needed
